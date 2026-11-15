@@ -121,5 +121,3 @@ stepsInterval ss =
      in a ... b
 
 stepStart Step{pInterval} = I.inf pInterval
-
-

@@ -31,6 +31,7 @@ import Data.Maybe
 import Data.String.Interpolate
 import Data.Text qualified as T
 import Data.Text.IO qualified as T
+import Data.Yaml
 import GHC.Generics hiding (moduleName)
 import NITTA.Project.Context
 import NITTA.Project.Types
@@ -39,7 +40,6 @@ import System.FilePath
 import System.Log.Logger
 import System.Path.WildMatch
 import Text.Ginger
-import Data.Yaml
 
 data Conf = Conf
     { template :: TemplateConf
@@ -88,7 +88,6 @@ collectNittaPath templates = do
             else Left err
     where
         getNittaPath = fromMaybe (error "internal error") . nittaPath . template
-
 
 readTemplateConfDef :: FilePath -> IO Conf
 readTemplateConfDef fn = do

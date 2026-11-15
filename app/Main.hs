@@ -21,8 +21,8 @@ import Control.Exception
 import Control.Monad (when)
 import Data.ByteString.Lazy.Char8 qualified as BS
 import Data.Default (def)
-import Data.Maybe
 import Data.Foldable (forM_)
+import Data.Maybe
 import Data.Proxy
 import Data.String.Utils qualified as S
 import Data.Text qualified as T

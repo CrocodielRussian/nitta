@@ -19,12 +19,13 @@ import Data.Aeson (
     genericToJSON,
  )
 import Data.Default (Default (def))
-import Data.Text qualified as T
 import Data.Map as M (
     Map,
     toList,
  )
 import Data.Maybe (fromMaybe)
+import Data.Text qualified as T
+import Data.Yaml
 import GHC.Generics (Generic)
 import NITTA.Intermediate.Value (Val)
 import NITTA.Intermediate.Variable (Var)
@@ -37,16 +38,15 @@ import NITTA.Model.Networks.Bus (
  )
 import NITTA.Model.Networks.Types (IOSynchronization)
 import NITTA.Model.ProcessorUnits qualified as PU
-import Data.Yaml
 import System.Directory (createDirectoryIfMissing)
 
 data PUConf
     = Accum
     | Divider
-        { pipeline :: Int }
+        {pipeline :: Int}
     | Multiplier
     | Fram
-        { size :: Int }
+        {size :: Int}
     | SPI
         { mosi :: T.Text
         , miso :: T.Text
@@ -57,7 +57,7 @@ data PUConf
         , bounceFilter :: Int
         }
     | Shift
-        { sRight :: Maybe Bool }
+        {sRight :: Maybe Bool}
     | Comparator
     | LogicalUnit
     | Multiplexer
@@ -88,7 +88,7 @@ data MicroarchitectureConf = MicroarchitectureConf
     , valueType :: T.Text
     , library :: Maybe (Map T.Text PUConf)
     , networks :: Map T.Text NetworkConf
-    , puLibrary :: Maybe (Map T.Text PUConf) 
+    , puLibrary :: Maybe (Map T.Text PUConf)
     }
     deriving (Generic, Show)
 
