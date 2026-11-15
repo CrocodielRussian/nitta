@@ -74,7 +74,7 @@ instance ToJSON PUConf where
 instance FromJSON PUConf where
     parseJSON = genericParseJSON puConfJsonOptions
 
-data NetworkConf = NetworkConf
+newtype NetworkConf = NetworkConf
     { pus :: Maybe (Map T.Text PUConf)
     }
     deriving (Generic, Show)
